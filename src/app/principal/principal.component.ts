@@ -33,10 +33,10 @@ export class PrincipalComponent {
   //Método de cadastro
   cadastrar():void{
     this.servico.cadastrar(this.produto)
-    .subscribe(retorno => { 
-      
+    .subscribe(retorno => {
+
       //Cadastrar o cliente no vetor
-      this.produtos.push(retorno); 
+      this.produtos.push(retorno);
 
       //Limpar formulário
       this.produto = new Produto();
@@ -120,7 +120,7 @@ export class PrincipalComponent {
 
   //Método para cancelar
   cancelar():void{
-    
+
     //Limpar formulário
     this.produto = new Produto();
 
@@ -128,9 +128,8 @@ export class PrincipalComponent {
     this.btnCadastro = true;
 
     //Visibilidade da tabel
-    this.tabela = true;  
+    this.tabela = true;
   }
-
 
   //Método de inicialização
   ngOnInit(){
