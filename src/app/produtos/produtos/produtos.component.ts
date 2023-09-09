@@ -4,6 +4,7 @@ import { ProdutosService } from '../services/produtos.service';
 import { Produto } from './../../modelo/Cliente';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-produtos',
@@ -12,8 +13,12 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 })
 export class ProdutosComponent implements OnInit{
 
+//
+produtos$: Observable<Produto[]>;
+
 //JSON de produtos (Armazenar os produtos que vem da API)
-produtos: Produto[] = [];
+//produtos: Produto[] = [];
+
 displayedColumns = ['titulo', 'preco', 'quantidade', 'acao'];
 
 //produtosService: ProdutosService;
@@ -24,14 +29,17 @@ constructor(
   ){
   //this.produtos = [];
   //this.produtosService = new ProdutosService();
+  this.produtos$ = this.produtosService.lista();
+  //this.produtosService.lista().subscribe(produtos => this.produtos = produtos);
 }
 
 //Método de seleção
+/*
 selecionar():void{
   this.produtosService.selecionar()
   .subscribe(retorno => this.produtos = retorno);
 }
-
+*/
 
 onAdd() {
   console.log('onAdd');
@@ -47,7 +55,7 @@ onError(errorMsg: string) {
 
 
 ngOnInit(): void {
-  this.selecionar();
+  //this.selecionar();
 }
 
 }
