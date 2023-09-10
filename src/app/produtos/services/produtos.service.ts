@@ -31,7 +31,7 @@ export class ProdutosService {
     return this.httpClient.get<Produto[]>(this.API)
     .pipe(
      first(),
-     delay(3000),
+     delay(1000),
      tap(produtos => console.log(produtos))
     );
   }

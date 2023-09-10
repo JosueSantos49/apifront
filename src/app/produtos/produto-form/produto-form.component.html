@@ -1,1 +1,28 @@
-<p>produto-form works!</p>
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar color="primary">Detalher do Produto</mat-toolbar>
+
+    <form [formGroup]="form" class="min-width">
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Título" formControlName="titulo">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Preço" formControlNamepreco>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Quantidade" formControlName="quantidade">
+      </mat-form-field>
+
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+    <button mat-raised-button (click)="onCancelar()">Cancelar</button>
+  </mat-card-actions>
+
+</mat-card>

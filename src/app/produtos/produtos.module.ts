@@ -18,7 +18,8 @@ import { ProdutosComponent } from './produtos/produtos.component';
     ProdutosRoutingModule,
     ReactiveFormsModule,
     AppMaterialModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class ProdutosModule { }

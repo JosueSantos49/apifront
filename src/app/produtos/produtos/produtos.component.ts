@@ -4,7 +4,8 @@ import { ProdutosService } from '../services/produtos.service';
 import { Produto } from './../../modelo/Cliente';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-produtos',
@@ -25,11 +26,20 @@ displayedColumns = ['titulo', 'preco', 'quantidade', 'acao'];
 
 constructor(
   private produtosService: ProdutosService,
-  public dialog: MatDialog
+  public dialog: MatDialog,
+  private router: Router,
+  private route: ActivatedRoute
   ){
   //this.produtos = [];
   //this.produtosService = new ProdutosService();
-  this.produtos$ = this.produtosService.lista();
+  this.produtos$ = this.produtosService.lista()
+  .pipe(
+    catchError(error => {
+      this.onError('Erro ao carregar o produto');
+      return of([])
+    })
+  );
+
   //this.produtosService.lista().subscribe(produtos => this.produtos = produtos);
 }
 
@@ -41,21 +51,18 @@ selecionar():void{
 }
 */
 
-onAdd() {
-  console.log('onAdd');
-  this.onError('onAdd');
+ngOnInit(): void {
+  //this.selecionar();
 }
 
+onAdd():any {
+  this.router.navigate(['novo'], { relativeTo: this.route});
+}
 
 onError(errorMsg: string) {
   this.dialog.open(ErrorDialogComponent, {
     data: errorMsg
   });
-}
-
-
-ngOnInit(): void {
-  //this.selecionar();
 }
 
 }
