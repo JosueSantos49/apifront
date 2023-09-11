@@ -31,7 +31,7 @@ export class ProdutosService {
     return this.httpClient.get<Produto[]>(this.API)
     .pipe(
      first(),
-     delay(1000),
+     //delay(1000),
      tap(produtos => console.log(produtos))
     );
   }
@@ -41,4 +41,8 @@ export class ProdutosService {
     return this.httpClient.get<Produto[]>(this.url);
   }
 
+  salvar(registro: Produto) {
+    return this.httpClient.post<Produto>(this.API, registro).pipe(first());
+    //console.log(registro);
+  }
 }
