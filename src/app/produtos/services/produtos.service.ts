@@ -1,7 +1,8 @@
-import { Produto } from './../../modelo/Cliente';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, delay, first, tap } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { first, Observable, tap } from 'rxjs';
+
+import { Produto } from './../../modelo/Cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class ProdutosService {
   */
 
   lista() {
-    return this.httpClient.get<Produto[]>(this.API)
+    return this.httpClient.get<Produto[]>(this.url)
     .pipe(
      first(),
      //delay(1000),
@@ -41,8 +42,8 @@ export class ProdutosService {
     return this.httpClient.get<Produto[]>(this.url);
   }
 
-  salvar(registro: Produto) {
-    return this.httpClient.post<Produto>(this.API, registro).pipe(first());
+  salvar(registro: Partial<Produto>) {
+    return this.httpClient.post<Produto>(this.url, registro).pipe(first());
     //console.log(registro);
   }
 }

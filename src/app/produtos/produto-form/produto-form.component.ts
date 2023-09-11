@@ -1,7 +1,9 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ProdutosService } from '../services/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { ProdutosService } from '../services/produtos.service';
 
 @Component({
   selector: 'app-produto-form',
@@ -15,7 +17,8 @@ export class ProdutoFormComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private produtosService: ProdutosService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private location: Location
     ){
     this.form = this.formBuilder.group({
       titulo: [null],
@@ -30,19 +33,21 @@ export class ProdutoFormComponent implements OnInit{
 
   onSubmit() {
     this.produtosService.salvar(this.form.value)
-    .subscribe(resultado => console.log(resultado), error => this.onError()
-      //console.log(error)
-    );
-
+    .subscribe(resultado => this.onSucess(), error => this.onError());
     //console.log(this.form.value);
   }
 
   onCancelar() {
-    console.log('canselar');
+    this.location.back();
+  }
+
+  private onSucess(){
+    this.snackBar.open('Produto salvo com sucesso!', '', { duration: 5000});
+    this.onCancelar();
   }
 
   private onError(){
-    this.snackBar.open('Erro ao salvar produto.', '', { duration: 1000});
+    this.snackBar.open('Erro ao salvar produto.', '', { duration: 5000});
   }
 
 }

@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { Observable, catchError, of } from 'rxjs';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-produtos',
