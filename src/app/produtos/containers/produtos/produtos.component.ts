@@ -57,6 +57,10 @@ onAdd():any {
   this.router.navigate(['novo'], { relativeTo: this.route});
 }
 
+onEdit(produto: Produto) {
+  this.router.navigate(['editar', produto.codigo], { relativeTo: this.route});
+}
+
 onError(errorMsg: string) {
   this.dialog.open(ErrorDialogComponent, {
     data: errorMsg

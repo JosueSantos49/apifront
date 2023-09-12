@@ -6,6 +6,7 @@
       <app-produtos-list *ngIf="produtos$ | async as produtos; else loading"
       [produtos]="produtos"
       (add)="onAdd()"
+      (edit)="onEdit($event)"
       ></app-produtos-list>
 
       <ng-template #loading>

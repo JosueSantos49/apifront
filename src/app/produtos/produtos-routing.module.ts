@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProdutosComponent } from './containers/produtos/produtos.component';
 import { ProdutoFormComponent } from './containers/produto-form/produto-form.component';
+import { ProdutoResolver } from './guarda-rota/produto.resolver';
 
 const routes: Routes = [
   {
@@ -10,7 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'novo',
-    component: ProdutoFormComponent
+    component: ProdutoFormComponent, resolve: { produto: ProdutoResolver }
+  },
+  {
+    path: 'editar/:codigo',
+    component: ProdutoFormComponent, resolve: { produto: ProdutoResolver }
   }
 ];
 

@@ -37,6 +37,11 @@ export class ProdutosService {
     );
   }
 
+  //Obter a informação do servidor
+  loadById(codigo: number) {
+    return this.httpClient.get<Produto>(`${this.url}/${codigo}`);
+  }
+
   //Método para selecionar todos os produtos
   selecionar():Observable<Produto[]>{
     return this.httpClient.get<Produto[]>(this.url);

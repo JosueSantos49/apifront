@@ -27,7 +27,7 @@
     </mat-header-cell>
 
     <mat-cell *matCellDef="let produto" class="action-column">
-      <button mat-icon-button color="primary" aria-label="Editar Produto">
+      <button mat-icon-button color="primary" aria-label="Editar Produto" (click)="onEdit(produto)">
         <mat-icon>edit</mat-icon>
       </button>
 

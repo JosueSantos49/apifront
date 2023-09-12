@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ProdutosService } from '../../services/produtos.service';
+import { ActivatedRoute } from '@angular/router';
+import { Produto } from 'src/app/modelo/Cliente';
 
 @Component({
   selector: 'app-produto-form',
@@ -18,17 +20,25 @@ export class ProdutoFormComponent implements OnInit{
     private formBuilder: FormBuilder,
     private produtosService: ProdutosService,
     private snackBar: MatSnackBar,
-    private location: Location
+    private location: Location,
+    private route: ActivatedRoute
     ){
     this.form = this.formBuilder.group({
-      titulo: [null],
-      preco: [null],
-      quantidade: [null]
+      codigo: [0],
+      titulo: [''],
+      preco: [0],
+      quantidade: ['']
     });
   }
 
   ngOnInit(): void {
-
+    const produto: Produto = this.route.snapshot.data['produto'];
+    this.form.setValue({
+      codigo: produto.codigo,
+      titulo: produto.titulo,
+      preco: produto.preco,
+      quantidade: produto.quantidade
+    });
   }
 
   onSubmit() {
