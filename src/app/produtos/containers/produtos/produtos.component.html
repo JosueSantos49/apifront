@@ -3,7 +3,10 @@
     <mat-toolbar color="primary">Produtos Disponíveis</mat-toolbar>
 
     <div class="column-felx mat-elevation-z8">
-      <app-produtos-list *ngIf="produtos$ | async as produtos; else loading" [produtos]="produtos"></app-produtos-list>
+      <app-produtos-list *ngIf="produtos$ | async as produtos; else loading"
+      [produtos]="produtos"
+      (add)="onAdd()"
+      ></app-produtos-list>
 
       <ng-template #loading>
         <div class="loading-spinner">

@@ -4,10 +4,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { SharedModule } from '../shared/shared.module';
-import { ProdutoFormComponent } from './produto-form/produto-form.component';
+import { ProdutoFormComponent } from './containers/produto-form/produto-form.component';
 import { ProdutosRoutingModule } from './produtos-routing.module';
-import { ProdutosComponent } from './produtos/produtos.component';
-import { ProdutosListComponent } from './produtos-list/produtos-list.component';
+import { ProdutosComponent } from './containers/produtos/produtos.component';
+import { ProdutosListComponent } from './components/produtos-list/produtos-list.component';
 
 @NgModule({
   declarations: [

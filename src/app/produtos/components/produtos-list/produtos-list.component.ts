@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Produto } from 'src/app/modelo/Cliente';
 
 @Component({
@@ -10,13 +9,11 @@ import { Produto } from 'src/app/modelo/Cliente';
 export class ProdutosListComponent implements OnInit{
 
   @Input() produtos: Produto[] = [];
+  @Output() add = new EventEmitter(false);
 
   readonly displayedColumns = ['titulo', 'preco', 'quantidade', 'acao'];
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
+  constructor() {
 
   }
 
@@ -24,7 +21,7 @@ export class ProdutosListComponent implements OnInit{
   }
 
   onAdd():any {
-    this.router.navigate(['novo'], { relativeTo: this.route});
+    this.add.emit(true);
   }
 
 }

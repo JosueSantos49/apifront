@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
-import { ProdutosService } from '../services/produtos.service';
-import { Produto } from './../../modelo/Cliente';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
-import { Observable, catchError, of } from 'rxjs';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { Location } from '@angular/common';
+
+import { Produto } from '../../../modelo/Cliente';
+import { ProdutosService } from '../../services/produtos.service';
 
 @Component({
   selector: 'app-produtos',
