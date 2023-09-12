@@ -21,8 +21,6 @@ produtos$: Observable<Produto[]>;
 //JSON de produtos (Armazenar os produtos que vem da API)
 //produtos: Produto[] = [];
 
-displayedColumns = ['titulo', 'preco', 'quantidade', 'acao'];
-
 //produtosService: ProdutosService;
 
 constructor(

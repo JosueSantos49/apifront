@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, Observable, tap } from 'rxjs';
+import { delay, first, Observable, tap } from 'rxjs';
 
 import { Produto } from './../../modelo/Cliente';
 
@@ -32,7 +32,7 @@ export class ProdutosService {
     return this.httpClient.get<Produto[]>(this.url)
     .pipe(
      first(),
-     //delay(1000),
+     delay(1000),
      tap(produtos => console.log(produtos))
     );
   }
