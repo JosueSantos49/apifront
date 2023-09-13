@@ -8,12 +8,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    HomeComponent,
+    AdminComponent,
+    UserComponent,
+    LoginComponent,
+    HeaderComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +34,8 @@ import { PrincipalComponent } from './principal/principal.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
