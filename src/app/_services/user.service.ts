@@ -16,7 +16,7 @@ export class UserService {
 
   constructor(
     private httpClient: HttpClient,
-    private uUserAuthService: UserAuthService
+    private userAuthService: UserAuthService
   ) { }
 
   public login(loginData:any){
@@ -25,7 +25,7 @@ export class UserService {
 
   public roleMatch(allowedRoles:any): boolean {
     let isMatch = false;
-    const userRoles: any = this.uUserAuthService.getRoles();
+    const userRoles: any = this.userAuthService.getRoles();
 
     if(userRoles != null && userRoles) {
       for(let i=0; i < userRoles.length; i++) {
