@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ProdutosService } from '../../services/produtos.service';
 import { ActivatedRoute } from '@angular/router';
-import { Produto } from 'src/app/modelo/Cliente';
+import { Produto } from 'src/app/modelo/Produto';
 
 @Component({
   selector: 'app-produto-form',

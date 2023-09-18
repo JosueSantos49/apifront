@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
-import { Produto } from '../../../modelo/Cliente';
+import { Produto } from '../../../modelo/Produto';
 import { ProdutosService } from '../../services/produtos.service';
 
 @Component({

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, first, Observable, tap } from 'rxjs';
 
-import { Produto } from './../../modelo/Cliente';
+import { Produto } from '../../modelo/Produto';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class ProdutosService {
   */
 
   lista() {
-    return this.httpClient.get<Produto[]>(this.url)
+    return this.httpClient.get<Produto[]>(this.url + '/lista-produtos', {responseType:"json"})
     .pipe(
      first(),
      delay(1000),
@@ -48,7 +48,7 @@ export class ProdutosService {
   }
 
   salvar(registro: Partial<Produto>) {
-    return this.httpClient.post<Produto>(this.url, registro).pipe(first());
+    return this.httpClient.post<Produto>(this.url + '/criar-produto', registro, {responseType:"json"}).pipe(first());
     //console.log(registro);
   }
 }

@@ -11,7 +11,7 @@ export class UserService {
   PATH_OF_API = 'http://localhost:8080';
 
   requestHeader = new HttpHeaders(
-    { "No-Auth":"True" }
+    { "No-Auth":"True", 'Content-Type':'application/json' }
   );
 
   constructor(
@@ -20,24 +20,27 @@ export class UserService {
   ) { }
 
   public login(loginData:any){
-    return this.httpClient.post(this.PATH_OF_API + "/autenticar", loginData, {headers: this.requestHeader});
+    return this.httpClient.post(this.PATH_OF_API + "/autenticacao", loginData, {headers: this.requestHeader});
   }
 
   public forUser() {
-    return this.httpClient.get(this.PATH_OF_API + '/forUser', {responseType:"text"});
+    return this.httpClient.get(this.PATH_OF_API + '/paraUser', {responseType:"text"});
   }
 
   public forAdmin() {
-    return this.httpClient.get(this.PATH_OF_API + '/forAdmin', {responseType:"text"});
+    return this.httpClient.get(this.PATH_OF_API + '/paraAdmin', {responseType:"text"});
   }
 
-  public roleMatch(allowedRoles:any): boolean {
+  public roleMatch(allowedRoles: any[]): boolean {
+
     let isMatch = false;
     const userRoles: any = this.userAuthService.getRoles();
 
+    //console.log('UserService roleMatch: '+userRoles);
+
     if(userRoles != null && userRoles) {
       for(let i=0; i < userRoles.length; i++) {
-        for(let j=0; j < allowedRoles.lengt; j++) {
+        for(let j=0; j < allowedRoles.length; j++) {
 
           if(userRoles[i].roleName === allowedRoles[j]) {
             isMatch = true;

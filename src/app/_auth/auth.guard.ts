@@ -7,7 +7,7 @@ import { UserService } from '../_services/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard {
 
   constructor(
     private userAuthService: UserAuthService,
@@ -19,16 +19,23 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
       if(this.userAuthService.getToken() != null) {
+
         const role = route.data["roles"] as Array<string>;
+        console.log('AuthGuard: '+role);
 
         if(role) {
+
           const match = this.userService.roleMatch(role);
 
           if(match) {
+
             return true;
+
           } else {
+
             this.router.navigate(['/forbidden']);
             return false;
+
           }
         }
       }

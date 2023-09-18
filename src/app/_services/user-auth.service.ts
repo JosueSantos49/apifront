@@ -11,8 +11,13 @@ export class UserAuthService {
     localStorage.setItem("roles", JSON.stringify(roles));
   }
 
-  public getRoles(): [] {
-    const item = window.localStorage.getItem('roles');
+  public getRoles(): any[] {
+    //return JSON.parse(localStorage.getItem('roles'));
+
+    /**/
+    //const item = window.localStorage.getItem(JSON.stringify('roles'));
+    const item = localStorage.getItem(JSON.stringify('roles'));
+    //console.log('getRoles() item: '+item);
     return item ? JSON.parse(item) : [];
   }
 
@@ -21,7 +26,8 @@ export class UserAuthService {
   }
 
   public getToken(): string {
-   const item =window.localStorage.getItem('jwtToken');
+   const item = localStorage.getItem(JSON.stringify('jwtToken'));
+   //console.log('getToken() item: '+item);
    return item ? JSON.parse(item) : [];
   }
 
@@ -30,6 +36,7 @@ export class UserAuthService {
   }
 
   public isLoggedIn() {
+    //console.log('UserAuthService isLoggedIn(): '+this.getRoles() && this.getToken());
     return this.getRoles() && this.getToken();
   }
 
