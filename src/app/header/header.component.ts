@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-
+    this.isLoggedIn();
   }
 
   public isLoggedIn() {

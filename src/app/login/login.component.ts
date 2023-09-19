@@ -12,6 +12,8 @@ import { UserService } from '../_services/user.service';
 })
 export class LoginComponent implements OnInit{
 
+  usuario: any = [];
+
   constructor(
     private userService: UserService,
     private userAuthService: UserAuthService,
@@ -23,31 +25,19 @@ export class LoginComponent implements OnInit{
   }
 
   login(loginForm: NgForm) {
-    this.userService
-    .login(loginForm.value)
+    this.userService.login(loginForm.value)
         .subscribe(
             {
                 next: (resposta:any) => {
 
-                  //o objeto só está retornando o token. verificar porque não estpa completo.
-                  const values = Object.values(resposta);
-                  console.log('values: '+values);
+                  this.usuario = resposta;
 
-                  console.log('Pegou o token: '+resposta.jwtToken);
-                  console.log('Pegou o role: '+resposta.usuario.role);
-                  console.log('Pegou o roleNome: '+resposta.usuario.role[0]);
-                  console.log('Pegou o usuario: '+resposta.usuario);
+                  this.userAuthService.setRoles(this.usuario.usuario.role);
+                  this.userAuthService.setToken(this.usuario.jwtToken);
 
-                  this.userAuthService.setRoles(resposta.usuario.role),
-                  this.userAuthService.setToken(resposta.jwtToken)
+                  const roleNome = this.usuario.usuario.role[0].roleNome;
 
-                  console.log('Pegou a resposta: '+resposta);
-
-                  const role = resposta.usuario.role[0].roleName;
-
-                  console.log('Role[0]: '+role);
-
-                  if(role === 'Admin') {
+                  if(roleNome === 'Admin') {
                     this.router.navigate(['/admin']);
                   } else {
                     this.router.navigate(['/usuario']);

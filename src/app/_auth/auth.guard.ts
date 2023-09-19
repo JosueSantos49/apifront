@@ -20,12 +20,12 @@ export class AuthGuard {
 
       if(this.userAuthService.getToken() != null) {
 
-        const role = route.data["roles"] as Array<string>;
-        console.log('AuthGuard: '+role);
+        const role = route.data['roles'] as Array<string>;
 
         if(role) {
 
           const match = this.userService.roleMatch(role);
+          console.log('Rotas com AuthGuard valor do match: ',match);
 
           if(match) {
 

@@ -20,6 +20,7 @@ export class UserService {
   ) { }
 
   public login(loginData:any){
+    console.log(this.PATH_OF_API + "/autenticacao", loginData, {headers: this.requestHeader});
     return this.httpClient.post(this.PATH_OF_API + "/autenticacao", loginData, {headers: this.requestHeader});
   }
 
@@ -31,20 +32,26 @@ export class UserService {
     return this.httpClient.get(this.PATH_OF_API + '/paraAdmin', {responseType:"text"});
   }
 
-  public roleMatch(allowedRoles: any[]): boolean {
+  public roleMatch(allowedRoles: any): boolean {
 
     let isMatch = false;
     const userRoles: any = this.userAuthService.getRoles();
 
-    //console.log('UserService roleMatch: '+userRoles);
-
     if(userRoles != null && userRoles) {
-      for(let i=0; i < userRoles.length; i++) {
-        for(let j=0; j < allowedRoles.length; j++) {
 
-          if(userRoles[i].roleName === allowedRoles[j]) {
+      for(let i=0; i < userRoles.length; i++) {
+        console.log('UserService roleMatch userRoles: ',userRoles[i]);
+        for(let j=0; j < allowedRoles.length; j++) {
+          console.log('UserService roleMatch allowedRoles: ',allowedRoles[j]);
+
+          //if(userRoles[i].roleName === allowedRoles[j])
+          if(allowedRoles.indexOf(userRoles[i].roleName)){
+
+            console.log('UserService roleMatch achou: ',allowedRoles.indexOf(userRoles[i].roleName));
+
             isMatch = true;
             return isMatch;
+
           } else {
             return isMatch;
           }

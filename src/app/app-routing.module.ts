@@ -10,6 +10,20 @@ import { AuthGuard } from './_auth/auth.guard';
 const routes: Routes = [
 
   {
+    path:'',
+    redirectTo:'home',
+    pathMatch: 'full'
+  },
+
+  {
+    path: 'home', component: HomeComponent
+  },
+
+  {
+    path: 'login', component: LoginComponent
+  },
+
+  {
     path:'home', component: HomeComponent
   },
   {
@@ -18,11 +32,9 @@ const routes: Routes = [
   },
   {
     path:'usuario', component: UserComponent,
-    canActivate:[AuthGuard], data:{roles:['Usuario']}
+    canActivate:[AuthGuard], data:{roles:['Usuario', 'Admin']}
   },
-  {
-    path:'login', component: LoginComponent
-  },
+
   {
     path:'forbidden', component: ForbiddenComponent
   },
@@ -39,6 +51,7 @@ const routes: Routes = [
     path: 'produtos',
     loadChildren: () => import('./produtos/produtos.module').then(module => module.ProdutosModule)
   }
+
 ];
 
 @NgModule({
