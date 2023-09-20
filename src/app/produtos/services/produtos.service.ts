@@ -12,6 +12,8 @@ export class ProdutosService {
   //Url da APISERVE (Back-end)
   private url:string = 'http://localhost:8080';
 
+  PATH_API_AUTH = '/api/auth';
+
   //arquivo de teste local
   private readonly API = '/assets/produtos.json';
 
@@ -29,7 +31,7 @@ export class ProdutosService {
   */
 
   lista() {
-    return this.httpClient.get<Produto[]>(this.url + '/lista-produtos', {responseType:"json"})
+    return this.httpClient.get<Produto[]>(this.url + this.PATH_API_AUTH + '/lista-produtos', {responseType:"json"})
     .pipe(
      first(),
      delay(1000),
@@ -48,7 +50,7 @@ export class ProdutosService {
   }
 
   salvar(registro: Partial<Produto>) {
-    return this.httpClient.post<Produto>(this.url + '/criar-produto', registro, {responseType:"json"}).pipe(first());
+    return this.httpClient.post<Produto>(this.url + this.PATH_API_AUTH + '/criar-produto', registro, {responseType:"json"}).pipe(first());
     //console.log(registro);
   }
 }

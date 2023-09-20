@@ -10,6 +10,8 @@ export class UserService {
 
   PATH_OF_API = 'http://localhost:8080';
 
+  PATH_API_AUTH = '/api/auth';
+
   requestHeader = new HttpHeaders(
     { "No-Auth":"True", 'Content-Type':'application/json' }
   );
@@ -20,16 +22,16 @@ export class UserService {
   ) { }
 
   public login(loginData:any){
-    console.log(this.PATH_OF_API + "/autenticacao", loginData, {headers: this.requestHeader});
-    return this.httpClient.post(this.PATH_OF_API + "/autenticacao", loginData, {headers: this.requestHeader});
+    console.log(this.PATH_OF_API + this.PATH_API_AUTH + "/entrar", loginData, {headers: this.requestHeader});
+    return this.httpClient.post(this.PATH_OF_API + this.PATH_API_AUTH + "/entrar", loginData, {headers: this.requestHeader});
   }
 
   public forUser() {
-    return this.httpClient.get(this.PATH_OF_API + '/paraUser', {responseType:"text"});
+    return this.httpClient.get(this.PATH_OF_API + this.PATH_API_AUTH + '/paraUser', {responseType:"text"});
   }
 
   public forAdmin() {
-    return this.httpClient.get(this.PATH_OF_API + '/paraAdmin', {responseType:"text"});
+    return this.httpClient.get(this.PATH_OF_API + this.PATH_API_AUTH + '/paraAdmin', {responseType:"text"});
   }
 
   public roleMatch(allowedRoles: any): boolean {

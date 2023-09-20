@@ -6,6 +6,7 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AuthGuard } from './_auth/auth.guard';
+import { ProdutosComponent } from './produtos/containers/produtos/produtos.component';
 
 const routes: Routes = [
 
@@ -32,7 +33,7 @@ const routes: Routes = [
   },
   {
     path:'usuario', component: UserComponent,
-    canActivate:[AuthGuard], data:{roles:['Usuario', 'Admin']}
+    canActivate:[AuthGuard], data:{roles:['Usuario']}
   },
 
   {
@@ -49,8 +50,10 @@ const routes: Routes = [
 
   {
     path: 'produtos',
-    loadChildren: () => import('./produtos/produtos.module').then(module => module.ProdutosModule)
+    loadChildren: () => import('./produtos/produtos.module').then(module => module.ProdutosModule),
+    canActivate:[AuthGuard], data:{roles:['Admin']}
   }
+
 
 ];
 

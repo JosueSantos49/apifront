@@ -15,9 +15,12 @@
           >Painel Admin</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/user"
+          <a class="nav-link active" aria-current="page" routerLink="/usuario"
           *ngIf="userService.roleMatch(['Usuario'])"
-          >Painel User</a>
+          >Painel Usuario</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/produtos">Produto</a>
         </li>
       </ul>
       <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>

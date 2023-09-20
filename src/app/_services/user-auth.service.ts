@@ -12,10 +12,8 @@ export class UserAuthService {
   }
 
   public getRoles(): any {
-
     const item = localStorage.getItem('roles');
     return item ? JSON.parse(item) : [];
-
   }
 
   public setToken(jwtToken:string): void {
@@ -23,10 +21,8 @@ export class UserAuthService {
   }
 
   public getToken(): string {
-
    let item = localStorage.getItem('jwtToken');
    return item ? JSON.parse(JSON.stringify(item)) : [];
-
   }
 
   public clear() {
@@ -34,8 +30,6 @@ export class UserAuthService {
   }
 
   public isLoggedIn() {
-    console.log('UserAuthService this.getRoles(): ',this.getRoles());
-    console.log('UserAuthService getToken(): ',this.getToken());
     return this.getRoles() && this.getToken();
   }
 
