@@ -27,7 +27,8 @@ export class UserService {
   }
 
   public forUser() {
-    return this.httpClient.get(this.PATH_OF_API + this.PATH_API_AUTH + '/paraUser', {responseType:"text"});
+    return this.httpClient.get(this.PATH_OF_API + this.PATH_API_AUTH + '/paraUsuario', {responseType:"text"});
+    //return this.httpClient.get(this.PATH_OF_API + this.PATH_API_AUTH + '/paraUsuario', {responseType:"text"});
   }
 
   public forAdmin() {
@@ -40,21 +41,19 @@ export class UserService {
     const userRoles: any = this.userAuthService.getRoles();
 
     if(userRoles != null && userRoles) {
-
       for(let i=0; i < userRoles.length; i++) {
-        console.log('UserService roleMatch userRoles: ',userRoles[i]);
+        console.log('userRoles: ',userRoles);
         for(let j=0; j < allowedRoles.length; j++) {
-          console.log('UserService roleMatch allowedRoles: ',allowedRoles[j]);
+          //if(userRoles[i].roleName === allowedRoles[j]){}
+          console.log('allowedRoles: ',allowedRoles);
 
-          //if(userRoles[i].roleName === allowedRoles[j])
           if(allowedRoles.indexOf(userRoles[i].roleName)){
-
-            console.log('UserService roleMatch achou: ',allowedRoles.indexOf(userRoles[i].roleName));
-
+            console.log('roleMatch achou: ',allowedRoles.indexOf(userRoles[i].roleName));
             isMatch = true;
             return isMatch;
-
-          } else {
+          }
+          else {
+            console.log('roleMatch não achou: ',allowedRoles.indexOf(userRoles[i].roleName));
             return isMatch;
           }
 

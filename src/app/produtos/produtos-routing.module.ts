@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProdutosComponent } from './containers/produtos/produtos.component';
 import { ProdutoFormComponent } from './containers/produto-form/produto-form.component';
 import { ProdutoResolver } from './guarda-rota/produto.resolver';
+import { AuthGuard } from '../_auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'editar/:codigo',
-    component: ProdutoFormComponent, resolve: { produto: ProdutoResolver }
+    component: ProdutoFormComponent,
+    resolve: { produto: ProdutoResolver },
+    canActivate:[AuthGuard], data:{roles:['Admin']}
   }
 ];
 

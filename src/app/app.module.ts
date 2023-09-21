@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { UserService } from './_services/user.service';
     BrowserAnimationsModule,
     MatToolbarModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    CommonModule
   ],
   providers: [
     AuthGuard,

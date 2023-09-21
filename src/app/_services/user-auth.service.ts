@@ -30,6 +30,8 @@ export class UserAuthService {
   }
 
   public isLoggedIn() {
+    console.log('user-auth this.getRoles(): ', this.getRoles());
+    console.log('user-auth this.getToken(): ', this.getToken());
     return this.getRoles() && this.getToken();
   }
 

@@ -14,13 +14,13 @@ export class ProdutosService {
 
   PATH_API_AUTH = '/api/auth';
 
-  //arquivo de teste local
+  //arquivo de teste local mocado
   private readonly API = '/assets/produtos.json';
 
   constructor(private httpClient: HttpClient) { }
 
   /*
-  //Teste
+  //Teste mocado
   list(): Produto[] {
     return [
       {
@@ -29,6 +29,10 @@ export class ProdutosService {
     ];
   }
   */
+
+  salvar(registro: Partial<Produto>) {
+    return this.httpClient.post<Produto>(this.url + this.PATH_API_AUTH + '/criar-produto', registro, {responseType:"json"}).pipe(first());
+  }
 
   lista() {
     return this.httpClient.get<Produto[]>(this.url + this.PATH_API_AUTH + '/lista-produtos', {responseType:"json"})
@@ -39,9 +43,9 @@ export class ProdutosService {
     );
   }
 
-  //Obter a informação do servidor
+  //Inseri ou edita com resolver. Obter a informação do servidor
   loadById(codigo: number) {
-    return this.httpClient.get<Produto>(`${this.url}/${codigo}`);
+    return this.httpClient.get<Produto>(`${this.url + this.PATH_API_AUTH}/${codigo}`);
   }
 
   //Método para selecionar todos os produtos
@@ -49,8 +53,5 @@ export class ProdutosService {
     return this.httpClient.get<Produto[]>(this.url);
   }
 
-  salvar(registro: Partial<Produto>) {
-    return this.httpClient.post<Produto>(this.url + this.PATH_API_AUTH + '/criar-produto', registro, {responseType:"json"}).pipe(first());
-    //console.log(registro);
-  }
+
 }
