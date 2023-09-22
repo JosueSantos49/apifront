@@ -12,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'novo',
-    component: ProdutoFormComponent, resolve: { produto: ProdutoResolver }
+    component: ProdutoFormComponent, resolve: { produto: ProdutoResolver },
+    canActivate:[AuthGuard], data:{roles:['Admin']}
   },
   {
     path: 'editar/:codigo',

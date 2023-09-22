@@ -7,6 +7,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 import { Produto } from '../../../modelo/Produto';
 import { ProdutosService } from '../../services/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmacaoDialogComponent } from 'src/app/shared/components/confirmacao-dialog/confirmacao-dialog.component';
 
 @Component({
   selector: 'app-produtos',
@@ -57,17 +58,31 @@ onEdit(produto: Produto) {
 }
 
 onRemover(produto: Produto) {
-  this.produtosService.remover(produto.codigo).subscribe(
-    () => {
-      this.atualizar();
-      this.snackBar.open('Produto removido com sucesso!', 'x', {
-        duration: 5000,
-        verticalPosition: 'top',
-        horizontalPosition: 'center'
-      });
-    },
-    error => this.onError('Erro ao tentar remover produto')
-  );
+
+  //Confirmação dialog
+  const dialogRef = this.dialog.open(ConfirmacaoDialogComponent, {
+    data: 'Tem certeza que deseja remover esse produto?',
+  });
+
+  dialogRef.afterClosed().subscribe((result: boolean) => {
+
+    if(result) {
+
+      //Se tiver conteúdo remova
+      this.produtosService.remover(produto.codigo).subscribe(
+        () => {
+          this.atualizar();
+          this.snackBar.open('Produto removido com sucesso!', 'x', {
+            duration: 5000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center'
+          });
+        },
+        error => this.onError('Erro ao tentar remover produto')
+      );
+    }
+
+  });
 }
 
 atualizar() {

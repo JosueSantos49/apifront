@@ -47,7 +47,7 @@ const routes: Routes = [
   {
     path: 'produtos',
     loadChildren: () => import('./produtos/produtos.module').then(module => module.ProdutosModule),
-    canActivate:[AuthGuard], data:{roles:['Admin']}
+    canActivate:[AuthGuard], data:{ roles:['Admin', 'Usuario'] }
   }
 
 

@@ -20,7 +20,9 @@
           >Painel Usuario</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/produtos">Produto</a>
+          <a class="nav-link active" aria-current="page" routerLink="/produtos"
+          *ngIf="userService.roleMatch(['Admin'])"
+          >Produto</a>
         </li>
       </ul>
       <button *ngIf="estaLogado() == false" type="button" class="btn btn-success" routerLink="/login">Login</button>
