@@ -53,5 +53,9 @@ export class ProdutosService {
     return this.httpClient.get<Produto[]>(this.url);
   }
 
+  remover(codigo: number) {
+    return this.httpClient.delete<Produto>(`${this.url + this.PATH_API_AUTH}/${codigo}`).pipe(first());
+  }
+
 
 }
