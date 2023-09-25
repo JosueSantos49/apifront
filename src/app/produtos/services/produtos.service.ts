@@ -38,7 +38,7 @@ export class ProdutosService {
     return this.httpClient.get<Produto[]>(this.url + this.PATH_API_AUTH + '/lista-produtos', {responseType:"json"})
     .pipe(
      first(),
-     delay(1000),
+     //delay(1000),
      tap(produtos => console.log(produtos))
     );
   }

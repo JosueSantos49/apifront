@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ProdutosService } from '../../services/produtos.service';
@@ -25,8 +25,14 @@ export class ProdutoFormComponent implements OnInit{
     ){
     this.form = this.formBuilder.group({
       codigo: [0],
-      titulo: [''],
-      preco: [0],
+      titulo: ['', [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(100)
+      ]],
+      preco: [0,[
+        Validators.required
+      ]],
       quantidade: ['']
     });
   }
@@ -58,6 +64,26 @@ export class ProdutoFormComponent implements OnInit{
 
   private onError(){
     this.snackBar.open('Erro ao salvar produto.', '', { duration: 5000});
+  }
+
+  getErrorMessage(campoNome: string) {
+    const campo = this.form.get(campoNome);
+
+    if(campo?.hasError('required')) {
+      return 'Campo obrigatório';
+    }
+
+    if(campo?.hasError('minlength')) {
+      const requiredLength = campo.errors ? campo.errors['minlength']['requiredLength'] : 5;
+      return `Tamanho mínimo precisa ser de ${requiredLength} caracteres.`;
+    }
+
+    if(campo?.hasError('maxlength')) {
+      const requiredLength = campo.errors ? campo.errors['maxlength']['requiredLength'] : 200;
+      return `Tamanho máximo excedido de ${requiredLength} caracteres.`;
+    }
+
+    return 'Campo Inválido';
   }
 
 }
