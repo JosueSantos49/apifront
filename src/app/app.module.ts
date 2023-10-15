@@ -19,7 +19,7 @@ import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 import { CommonModule } from '@angular/common';
-
+import { PessoaListComponent } from './pessoas/components/pessoa-list/pessoa-list.component';
 
 @NgModule({
   declarations: [

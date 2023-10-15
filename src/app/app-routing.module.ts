@@ -48,6 +48,11 @@ const routes: Routes = [
     path: 'produtos',
     loadChildren: () => import('./produtos/produtos.module').then(module => module.ProdutosModule),
     canActivate:[AuthGuard], data:{ roles:['Admin', 'Usuario'] }
+  },
+  {
+    path: 'pessoas',
+    loadChildren: () => import('./pessoas/pessoas.module').then(module => module.PessoasModule),
+    canActivate:[AuthGuard], data:{ roles:['Admin', 'Usuario'] }
   }
 
 

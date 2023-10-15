@@ -24,6 +24,11 @@
           *ngIf="userService.roleMatch(['Admin'])"
           >Produto</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/pessoas"
+          *ngIf="userService.roleMatch(['Admin'])"
+          >Pessoa</a>
+        </li>
       </ul>
       <button *ngIf="estaLogado() == false" type="button" class="btn btn-success" routerLink="/login">Login</button>
       <button *ngIf="estaLogado() != false" type="button" class="btn btn-danger" (click)="logout()">Sair</button>

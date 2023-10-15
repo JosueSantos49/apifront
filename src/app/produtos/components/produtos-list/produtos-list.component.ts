@@ -16,7 +16,6 @@ export class ProdutosListComponent implements OnInit{
   readonly displayedColumns = ['titulo', 'preco', 'quantidade', 'acao'];
 
   constructor() {
-
   }
 
   ngOnInit(): void {
