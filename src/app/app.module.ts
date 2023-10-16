@@ -20,6 +20,7 @@ import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 import { CommonModule } from '@angular/common';
 import { PessoaListComponent } from './pessoas/components/pessoa-list/pessoa-list.component';
+import { AppMaterialModule } from './shared/app-material/app-material.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PessoaListComponent } from './pessoas/components/pessoa-list/pessoa-lis
     MatToolbarModule,
     AppRoutingModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    AppMaterialModule
   ],
   providers: [
     AuthGuard,

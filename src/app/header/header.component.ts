@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit{
     this.userAuthService.clear();
     let x = this.userAuthService.isLoggedIn();
     x = null;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
   }
 
 }
