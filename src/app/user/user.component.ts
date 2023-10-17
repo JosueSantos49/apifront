@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-user',
@@ -7,6 +8,12 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit{
+
+  @ViewChild('sidenav') sidenav: MatSidenav;
+  expandido = true;
+  mostrarSubMenu: boolean = false;
+  estaMostrando = false;
+  mostrarSubSubMenu: boolean = false;
 
   mensagem: string | undefined;
 
@@ -28,6 +35,19 @@ export class UserComponent implements OnInit{
       }
     );
   }
+
+  movimentoEntrar(){
+    if(!this.expandido){
+      this.estaMostrando = true;
+    }
+  }
+
+  movimentoSair(){
+    if(!this.expandido){
+      this.estaMostrando = false;
+    }
+  }
+
 
 
 }

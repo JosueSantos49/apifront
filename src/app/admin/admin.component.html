@@ -4,23 +4,27 @@
     <mat-nav-list>
 
       <mat-list-item (click)="mostrarSubMenu = !mostrarSubMenu">
-        <span class="full-width" *ngIf="expandido || estaMostrando">Painel Admin</span>
-				<mat-icon class="menu-button" [ngClass]="{'rotated' : mostrarSubMenu}" *ngIf="expandido || estaMostrando">expand_more 1</mat-icon>
-        <!--<button routerLink="" mat-button><mat-icon>supervised_user_circle</mat-icon> Painel Admin</button>-->
+        <span class="full-width" *ngIf="expandido || estaMostrando">Admin</span>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : mostrarSubMenu}" *ngIf="expandido || estaMostrando">expand_more</mat-icon>
       </mat-list-item>
 
       <div class="submenu" [ngClass]="{'expandido' : mostrarSubMenu}" *ngIf="estaMostrando || expandido">
+
         <a mat-list-item routerLink="/produtos" *ngIf="userService.roleMatch(['Admin'])">Produto</a>
 				<a mat-list-item routerLink="/pessoas" *ngIf="userService.roleMatch(['Admin'])">Pessoa</a>
-      <mat-list-item (click)="mostrarSubSubMenu = !mostrarSubSubMenu">
-        <span class="full-width" *ngIf="expandido || estaMostrando">Painel Usuário</span>
-        <mat-icon class="menu-button" [ngClass]="{'rotated' : mostrarSubSubMenu}" *ngIf="expandido || estaMostrando">expand_more 2</mat-icon>
-        <!--<button routerLink="" mat-button><mat-icon>supervisor_account</mat-icon> Painel Usuário</button>-->
-      </mat-list-item>
-      <div class="submenu" [ngClass]="{'expandido' : mostrarSubSubMenu}" *ngIf="estaMostrando || expandido">
-        <mat-list-item>SubSubmenu Item 1</mat-list-item>
-        <mat-list-item>SubSubmenu Item 2</mat-list-item>
-      </div>
+
+        <!-- Logica que permite mostrarSubSubMenu
+        <mat-list-item (click)="mostrarSubSubMenu = !mostrarSubSubMenu">
+          <span class="full-width" *ngIf="expandido || estaMostrando">Painel Usuário</span>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : mostrarSubSubMenu}" *ngIf="expandido || estaMostrando">expand_more</mat-icon>
+        </mat-list-item>
+
+        <div class="submenu" [ngClass]="{'expandido' : mostrarSubSubMenu}" *ngIf="estaMostrando || expandido">
+          <mat-list-item>SubSubmenu Item 1</mat-list-item>
+          <mat-list-item>SubSubmenu Item 2</mat-list-item>
+        </div>
+        -->
+
       </div>
 
     </mat-nav-list>
@@ -29,14 +33,18 @@
 
   <mat-drawer-content>
     <div style="text-align: center;min-height: 600px;">
-        <router-outlet></router-outlet>
+
+      <div class="container mt-5">
+        <div class="card text-center" style="padding: 20px; color: green;">
+          <h1>Você é Administrador</h1>
+        </div>
+      </div>
+
+      <router-outlet></router-outlet>
+
     </div>
   </mat-drawer-content>
 
 </mat-drawer-container>
 
-<div class="container mt-5">
-  <div class="card text-center" style="padding: 20px; color: green;">
-    <h1>Você é Administrador</h1>
-  </div>
-</div>
+
