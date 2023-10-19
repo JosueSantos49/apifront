@@ -1,27 +1,71 @@
-# ApiFront
+# CRUD com Angular e Spring criada com:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+- Angular CLI: 15.2.9
+- Node: 18.16.0
+- Package Manager: npm 9.5.1
+- @angular-devkit/architect       0.1502.9
+- @angular-devkit/build-angular   15.2.9
+- @angular-devkit/core            15.2.9
+- @angular-devkit/schematics      15.2.9
+- @schematics/angular             15.2.9
+- rxjs                            7.8.1
+- typescript                      4.9.5
+- Angula Material: 15.2.9 
+- Visual studio code
+- Sublime Text
 
-## Development server
+Aplicação Web com a responsabilidade de acessar uma Interface de Programação de Aplicação (API) criada com Java no BACK-END. O  usuário realizar login com Spring Security com JWT (leia README do projeto APISERVE) para entender o requisitos não funcionais usados e implementação de código).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Guard Auth 
 
-## Code scaffolding
+Verifica as Rotas com guarda de autorização com valor correspondente.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Interceptor Auth
 
-## Build
+Recupera o token do usuário cadastrado. Caso, o status for 401 retorna a página de login; status for 403 forbidden.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Services
 
-## Running unit tests
+user-auth: implementa métodos set e get de papéis (ROLES) do JWTTOKEN.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+user: implementa endpoint para o usuário realizar autenticação e permissão de painel para usuário e admin. O método roleMatch verifica se achou a role do usuário.
 
-## Running end-to-end tests
+# Componente admin
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Menu com rotas que o usuário com papel Admin pode acessar.
 
-## Further help
+# Componente forbidden
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Informa que o usuário não tem permissão para acessar a página.
+
+# Componente header 
+
+Botão com ação de está logado e caso, o usuário deseja deslogar é redirecionado para tela de login.
+
+# Componente home
+
+Página inicial da aplicação.
+
+# Componente login
+
+Formulário responsável por submeter os dados e através do serviço verificar a role, o token e redirecionar o usuário para a rotar permitida. 
+
+# Modelo Produto
+
+Implementa um CRUD de produto com operações de GET, POST, DELETE.
+
+# Componente produto
+
+Invoca em uma DIV o componente app-produtos-list (produtos-list), responsável por listar os produtos da base de dados. Cada item da lista ter a responsabilidade de adicionar, editar ou remover um produto.
+
+produtos-list: componente populado com dados do produto e operações de cada item da lista. Cada método da operação usa o EventEmitter para saída do evento (este evento com a ação é recuperado no componente renderizado). 
+
+produto-form: formulário com a responsabilidade de submeter os dados para persistência na base de dados. o serviço invoca o endipoint SALVAR quei vai no BACK-END e realiza a persistência.
+
+# Guarda-rota
+
+produto resolver: usa o ActivatedRouteSnapshot com Observable caso, a rota seja de editar ou de novo produto. 
+
+# Shared
+
+Compartilhada no app-material-module os imports global do material para toda a aplicação. 
