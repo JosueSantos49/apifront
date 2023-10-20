@@ -89,7 +89,7 @@ atualizar() {
   this.produtos$ = this.produtosService.lista()
   .pipe(
     catchError(error => {
-      this.onError('Erro ao carregar o produto');
+      this.onError('Erro ao carregar o produto.');
       return of([])
     })
   );

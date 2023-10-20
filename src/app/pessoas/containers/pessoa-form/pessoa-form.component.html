@@ -1,1 +1,27 @@
-<p>pessoa-form works!</p>
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar color="primary">Detalher de Pessoa</mat-toolbar>
+
+    <form [formGroup]="form" class="min-width">
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nome" formControlName="nome" #nome>
+        <mat-hint align="end">{{nome.value.length || 0 }} / 100</mat-hint>
+        <mat-error *ngIf="form.get('nome')?.invalid">{{getErrorMessage("nome")}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="CPF" formControlName="cpf">
+        <mat-error *ngIf="form.get('cpf')?.invalid">{{getErrorMessage("cpf")}}</mat-error>
+      </mat-form-field>
+
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions class="actions-center">
+    <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+    <button mat-raised-button (click)="onCancelar()" class="btn-space">Cancelar</button>
+  </mat-card-actions>
+
+</mat-card>

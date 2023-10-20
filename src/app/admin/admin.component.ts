@@ -19,6 +19,7 @@ export class AdminComponent {
     public userService: UserService
   ){}
 
+  /*
   movimentoEntrar(){
     if(!this.expandido){
       this.estaMostrando = true;
@@ -30,4 +31,5 @@ export class AdminComponent {
       this.estaMostrando = false;
     }
   }
+  */
 }

@@ -25,7 +25,7 @@ export class AuthGuard {
         if(role) {
 
           const match = this.userService.roleMatch(role);
-          console.log('Rotas com AuthGuard valor do match: ',match);
+          console.log('Rotas com guarda de autorizacao (AuthGuard) valor correspondente (match): ',match);
 
           if(match) {
 

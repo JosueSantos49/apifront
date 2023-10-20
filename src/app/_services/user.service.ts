@@ -41,8 +41,10 @@ export class UserService {
     const userRoles: any = this.userAuthService.getRoles();
 
     if(userRoles != null && userRoles) {
+
       for(let i=0; i < userRoles.length; i++) {
         console.log('userRoles: ',userRoles);
+
         for(let j=0; j < allowedRoles.length; j++) {
           //if(userRoles[i].roleName === allowedRoles[j]){}
           console.log('allowedRoles: ',allowedRoles);

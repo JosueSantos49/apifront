@@ -11,9 +11,9 @@ import { PessoasComponent } from './containers/pessoas/pessoas.component';
 
 @NgModule({
   declarations: [
+    PessoasComponent,
     PessoaFormComponent,
-    PessoaListComponent,
-    PessoasComponent
+    PessoaListComponent
   ],
   imports: [
     CommonModule,

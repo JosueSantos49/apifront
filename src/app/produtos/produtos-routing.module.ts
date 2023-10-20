@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProdutosComponent } from './containers/produtos/produtos.component';
 import { ProdutoFormComponent } from './containers/produto-form/produto-form.component';
-import { ProdutoResolver } from './guarda-rota/produto.resolver';
+import { ProdutoResolver } from '../guarda-rota/produto.resolver';
 import { AuthGuard } from '../_auth/auth.guard';
 
 const routes: Routes = [

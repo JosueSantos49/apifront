@@ -36,6 +36,7 @@ export class UserComponent implements OnInit{
     );
   }
 
+  /*
   movimentoEntrar(){
     if(!this.expandido){
       this.estaMostrando = true;
@@ -47,6 +48,7 @@ export class UserComponent implements OnInit{
       this.estaMostrando = false;
     }
   }
+  */
 
 
 

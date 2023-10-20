@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <mat-toolbar color="primary">Produtos Disponíveis</mat-toolbar>
+    <mat-toolbar color="primary">Produtos</mat-toolbar>
 
     <div class="column-felx mat-elevation-z8">
       <app-produtos-list *ngIf="produtos$ | async as produtos; else loading"
