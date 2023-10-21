@@ -33,5 +33,9 @@ export class PessoasService {
     return this.httpClient.get<Pessoa>(`${this.url + this.PATH_API_AUTH}/pessoa/${codigo}`);
   }
 
+  remover(codigo: number) {
+    return this.httpClient.delete<Pessoa>(`${this.url + this.PATH_API_AUTH}/pessoa/${codigo}`).pipe(first());
+  }
+
 
 }

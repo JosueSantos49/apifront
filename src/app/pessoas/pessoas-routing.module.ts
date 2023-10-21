@@ -14,6 +14,12 @@ const routes: Routes = [
     path: 'novo',
     component: PessoaFormComponent, resolve: { pessoa: PessoaResolver },
     canActivate:[AuthGuard], data:{roles:['Admin']}
+  },
+  {
+    path: 'editar/:codigo',
+    component: PessoaFormComponent,
+    resolve: { pessoa: PessoaResolver },
+    canActivate:[AuthGuard], data:{roles:['Admin']}
   }
 
 ];

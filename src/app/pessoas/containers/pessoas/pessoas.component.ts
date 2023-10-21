@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { ConfirmacaoDialogComponent } from 'src/app/shared/components/confirmacao-dialog/confirmacao-dialog.component';
 
 @Component({
   selector: 'app-pessoas',
@@ -34,11 +35,34 @@ export class PessoasComponent implements OnInit{
   }
 
   onEdit(pessoa: Pessoa){
-
+    this.router.navigate(['editar', pessoa.codigo], { relativeTo: this.route});
   }
 
   onRemover(pessoa: Pessoa){
+    //Confirmação dialog
+    const dialogRef = this.dialog.open(ConfirmacaoDialogComponent, {
+    data: 'Tem certeza que deseja remover essa pessoa?',
+  });
 
+  dialogRef.afterClosed().subscribe((result: boolean) => {
+
+    if(result) {
+
+      //Se tiver conteúdo remova
+      this.pessoaService.remover(pessoa.codigo).subscribe(
+        () => {
+          this.atualizar();
+          this.snackBar.open('Pessoa removida com sucesso!', 'x', {
+            duration: 5000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center'
+          });
+        },
+        error => this.onError('Erro ao tentar remover produto')
+      );
+    }
+
+  });
   }
 
   atualizar() {
