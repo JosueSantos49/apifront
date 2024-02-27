@@ -20,6 +20,7 @@ import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 import { CommonModule } from '@angular/common';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
+import { CursosModule } from './cursos/cursos.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AppMaterialModule } from './shared/app-material/app-material.module';
     AppRoutingModule,
     RouterModule,
     CommonModule,
-    AppMaterialModule
+    AppMaterialModule,
+    CursosModule
   ],
   providers: [
     AuthGuard,
